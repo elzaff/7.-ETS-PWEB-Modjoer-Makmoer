@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modjoer Makmoer - Menu</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Vanilla CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        html { scroll-behavior: smooth; }
+        .category-section { scroll-margin-top: 150px; }
+        #category-nav::-webkit-scrollbar { display: none; }
+        #category-nav { -ms-overflow-style: none; scrollbar-width: none; }
+        .add-btn { transition: all 0.2s; }
+        .add-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--primary);
+            color: var(--on-primary) !important;
+        }
+        /* Style for active pill in nav to match theme */
+        .nav-pills .nav-link { border: 1px solid transparent; color: var(--text-stone-dark); font-weight: 500; }
+        .nav-pills .nav-link.active { background-color: var(--primary) !important; color: var(--on-primary) !important; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navbar (Bootstrap) -->
+    <nav class="navbar navbar-expand-md sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.png" alt="Modjoer Makmoer" class="logo-img">
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="material-symbols-outlined text-primary">menu</span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0 d-flex gap-md-4 align-items-center">
+                    <li class="nav-item"><a class="nav-link label-sm" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link label-sm" href="index.html#about">Our Story</a></li>
+                    <li class="nav-item"><a class="nav-link label-sm" href="index.html#contact">Location</a></li>
+                    <li class="nav-item ms-md-2"><a class="nav-link label-sm active text-primary fw-bold" href="menu.html" style="border-bottom: 2px solid transparent;">Menu & Order</a></li>
+                </ul>
+
+                <div class="header-icons d-flex gap-2">
+                    <button class="btn border-0 position-relative" aria-label="Cart" onclick="toggleCart()">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill cart-badge d-none" id="cart-counter">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1 position-relative">
+        <div class="container my-5 menu-content-wrap bg-white rounded-4 shadow-sm p-4 p-md-5">
+            
+            <!-- Menu Header & Horizontal Category Nav -->
+            <div class="text-center mb-5">
+                <h1 class="headline-xl mb-2">Our Menu</h1>
+                <p class="fs-5 text-muted mb-4">A curated selection of our finest beverages and authentic bites.</p>
+                
+                <nav id="category-nav" class="nav nav-pills justify-content-md-center gap-2 overflow-auto flex-nowrap pb-2 sticky-top pt-2" style="top: 72px; z-index: 1020; background-color: var(--bg-surface-lowest);" role="tablist">
+                    <button class="nav-link label-sm rounded-pill px-4 active" id="pills-kopi-tab" data-bs-toggle="pill" data-bs-target="#cat-kopi" type="button" role="tab" aria-selected="true">KOPI</button>
+                    <button class="nav-link label-sm rounded-pill px-4" id="pills-kopsu-tab" data-bs-toggle="pill" data-bs-target="#cat-kopsu" type="button" role="tab" aria-selected="false">KOPSU</button>
+                    <button class="nav-link label-sm rounded-pill px-4" id="pills-teh-tab" data-bs-toggle="pill" data-bs-target="#cat-teh" type="button" role="tab" aria-selected="false">TEH</button>
+                    <button class="nav-link label-sm rounded-pill px-4" id="pills-bukan-tab" data-bs-toggle="pill" data-bs-target="#cat-bukan" type="button" role="tab" aria-selected="false">BUKAN TEH & KOPI</button>
+                    <button class="nav-link label-sm rounded-pill px-4" id="pills-makanan-tab" data-bs-toggle="pill" data-bs-target="#cat-makanan" type="button" role="tab" aria-selected="false">MAKANAN & CAMILAN</button>
+                </nav>
+            </div>
+
+            <!-- Categories Sections (Tabs) -->
+            <div class="tab-content" id="pills-tabContent">
+
+                <!-- Category: KOPI -->
+                <div class="tab-pane fade show active category-section mb-5" id="cat-kopi" role="tabpanel">
+                    <h2 class="headline-md border-bottom pb-2 mb-4 text-primary">KOPI</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-cols-xxl-5 g-4">
+                        <!-- Kopi Tubruk -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=400&q=80" alt="Kopi Tubruk" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Kopi Tubruk</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #d97706; font-size: 18px;">local_fire_department</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp6.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('kopi-tubruk-panas', 'Kopi Tubruk (Panas)', 6000, 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- Kopi Tubruk Susu -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=400&q=80" alt="Kopi Tubruk Susu" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Kopi Tubruk Susu</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #d97706; font-size: 18px;">local_fire_department</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp7.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('kopi-tubruk-susu-panas', 'Kopi Tubruk Susu (Panas)', 7000, 'https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- Kopi Tubruk Saring -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm" id="item-kopi-tubruk-saring">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=400&q=80" alt="Kopi Tubruk Saring" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Kopi Tubruk Saring</h3>
+                                    <!-- Variant Toggles -->
+                                    <div class="btn-group w-100 mb-2 mt-auto" role="group">
+                                        <input type="radio" class="btn-check" name="variant-kopi-tubruk-saring" id="variant-kopi-tubruk-saring-hot" autocomplete="off" checked 
+                                            data-id="kopi-tubruk-saring-panas" data-name="Kopi Tubruk Saring (Panas)" data-price="7000" data-icon="local_fire_department" data-icon-color="#d97706" data-img="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-kopi-tubruk-saring')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-kopi-tubruk-saring-hot"><span class="material-symbols-outlined fs-6 align-middle">local_fire_department</span> Panas</label>
+
+                                        <input type="radio" class="btn-check" name="variant-kopi-tubruk-saring" id="variant-kopi-tubruk-saring-cold" autocomplete="off" 
+                                            data-id="kopi-tubruk-saring-es" data-name="Kopi Tubruk Saring (Es)" data-price="8000" data-icon="ac_unit" data-icon-color="#0284c7" data-img="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-kopi-tubruk-saring')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-kopi-tubruk-saring-cold"><span class="material-symbols-outlined fs-6 align-middle">ac_unit</span> Es</label>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined active-icon" style="color: #d97706; font-size: 18px;">local_fire_department</span>
+                                                <span class="fw-semibold active-price" style="font-size: 14px;">Rp7.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addVariantToCart('item-kopi-tubruk-saring')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- Kopi Tubruk Saring Susu -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm" id="item-kopi-tubruk-saring-susu">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?auto=format&fit=crop&w=400&q=80" alt="Kopi Tubruk Saring Susu" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Kopi Tubruk Saring Susu</h3>
+                                    <!-- Variant Toggles -->
+                                    <div class="btn-group w-100 mb-2 mt-auto" role="group">
+                                        <input type="radio" class="btn-check" name="variant-kopi-tubruk-saring-susu" id="variant-kopi-tubruk-saring-susu-hot" autocomplete="off" checked 
+                                            data-id="kopi-tubruk-saring-susu-panas" data-name="Kopi Tubruk Saring Susu (Panas)" data-price="8000" data-icon="local_fire_department" data-icon-color="#d97706" data-img="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-kopi-tubruk-saring-susu')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-kopi-tubruk-saring-susu-hot"><span class="material-symbols-outlined fs-6 align-middle">local_fire_department</span> Panas</label>
+
+                                        <input type="radio" class="btn-check" name="variant-kopi-tubruk-saring-susu" id="variant-kopi-tubruk-saring-susu-cold" autocomplete="off" 
+                                            data-id="kopi-tubruk-saring-susu-es" data-name="Kopi Tubruk Saring Susu (Es)" data-price="10000" data-icon="ac_unit" data-icon-color="#0284c7" data-img="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-kopi-tubruk-saring-susu')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-kopi-tubruk-saring-susu-cold"><span class="material-symbols-outlined fs-6 align-middle">ac_unit</span> Es</label>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined active-icon" style="color: #d97706; font-size: 18px;">local_fire_department</span>
+                                                <span class="fw-semibold active-price" style="font-size: 14px;">Rp8.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addVariantToCart('item-kopi-tubruk-saring-susu')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- Es Kopi -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1461023058943-07cb7c30a1c8?auto=format&fit=crop&w=400&q=80" alt="Es Kopi" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp10.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('es-kopi', 'Es Kopi', 10000, 'https://images.unsplash.com/photo-1461023058943-07cb7c30a1c8?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- Es Kopi Stroberi -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1499961024600-ad094db305cc?auto=format&fit=crop&w=400&q=80" alt="Es Kopi Stroberi" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi Stroberi</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp12.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('es-kopi-stroberi', 'Es Kopi Stroberi', 12000, 'https://images.unsplash.com/photo-1499961024600-ad094db305cc?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- Es Kopi Melon -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=400&q=80" alt="Es Kopi Melon" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi Melon</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp12.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('es-kopi-melon', 'Es Kopi Melon', 12000, 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- V60 -->
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm" id="item-v60">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1495474472205-162b3d330d6e?auto=format&fit=crop&w=400&q=80" alt="V60" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">V60</h3>
+                                    <p class="card-text text-muted small m-0 mb-2">Authentic Beans</p>
+                                    <!-- Variant Toggles -->
+                                    <div class="btn-group w-100 mb-2 mt-auto" role="group">
+                                        <input type="radio" class="btn-check" name="variant-v60" id="variant-v60-hot" autocomplete="off" checked 
+                                            data-id="v60-panas" data-name="V60 (Panas)" data-price="12000" data-icon="local_fire_department" data-icon-color="#d97706" data-img="https://images.unsplash.com/photo-1495474472205-162b3d330d6e?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-v60')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-v60-hot"><span class="material-symbols-outlined fs-6 align-middle">local_fire_department</span> Panas</label>
+
+                                        <input type="radio" class="btn-check" name="variant-v60" id="variant-v60-cold" autocomplete="off" 
+                                            data-id="v60-es" data-name="V60 (Es)" data-price="12000" data-icon="ac_unit" data-icon-color="#0284c7" data-img="https://images.unsplash.com/photo-1495474472205-162b3d330d6e?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-v60')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-v60-cold"><span class="material-symbols-outlined fs-6 align-middle">ac_unit</span> Es</label>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined active-icon" style="color: #d97706; font-size: 18px;">local_fire_department</span>
+                                                <span class="fw-semibold active-price" style="font-size: 14px;">Rp12.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addVariantToCart('item-v60')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: KOPSU -->
+                <div class="tab-pane fade category-section mb-5" id="cat-kopsu" role="tabpanel">
+                    <h2 class="headline-md border-bottom pb-2 mb-4 text-primary">KOPSU (Kopi Susu)</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-cols-xxl-5 g-4">
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1572442388796-11668aa44f79?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi Susu Modjoer</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp12.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('kops-modjoer', 'Es Kopi Susu Modjoer', 12000, 'https://images.unsplash.com/photo-1572442388796-11668aa44f79?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1595908129746-5741f56a31c5?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi Susu Gula Aren</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp13.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('kops-aren', 'Es Kopi Susu Gula Aren', 13000, 'https://images.unsplash.com/photo-1595908129746-5741f56a31c5?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1557142046-c704a3adf8ac?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi Susu Hazelnut</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp14.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('kops-hazelnut', 'Es Kopi Susu Hazelnut', 14000, 'https://images.unsplash.com/photo-1557142046-c704a3adf8ac?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi Susu Butterscotch</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp14.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('kops-butterscotch', 'Es Kopi Susu Butterscotch', 14000, 'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1610444317134-297eb0cb50bf?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Es Kopi Susu Caramel</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp14.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('kops-caramel', 'Es Kopi Susu Caramel', 14000, 'https://images.unsplash.com/photo-1610444317134-297eb0cb50bf?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: TEH -->
+                <div class="tab-pane fade category-section mb-5" id="cat-teh" role="tabpanel">
+                    <h2 class="headline-md border-bottom pb-2 mb-4 text-primary">TEH</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-cols-xxl-5 g-4">
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm" id="item-teh-manis">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1544783359-fec71dc225d3?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Teh Manis</h3>
+                                    <!-- Variant Toggles -->
+                                    <div class="btn-group w-100 mb-2 mt-auto" role="group">
+                                        <input type="radio" class="btn-check" name="variant-teh-manis" id="variant-teh-manis-hot" autocomplete="off" checked 
+                                            data-id="teh-manis-panas" data-name="Teh Manis (Panas)" data-price="5000" data-icon="local_fire_department" data-icon-color="#d97706" data-img="https://images.unsplash.com/photo-1544783359-fec71dc225d3?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-teh-manis')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-teh-manis-hot"><span class="material-symbols-outlined fs-6 align-middle">local_fire_department</span> Panas</label>
+
+                                        <input type="radio" class="btn-check" name="variant-teh-manis" id="variant-teh-manis-cold" autocomplete="off" 
+                                            data-id="teh-manis-es" data-name="Teh Manis (Es)" data-price="7000" data-icon="ac_unit" data-icon-color="#0284c7" data-img="https://images.unsplash.com/photo-1544783359-fec71dc225d3?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-teh-manis')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-teh-manis-cold"><span class="material-symbols-outlined fs-6 align-middle">ac_unit</span> Es</label>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined active-icon" style="color: #d97706; font-size: 18px;">local_fire_department</span>
+                                                <span class="fw-semibold active-price" style="font-size: 14px;">Rp5.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addVariantToCart('item-teh-manis')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm" id="item-teh-susu">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1576092762791-dd9e2220afa1?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Teh Susu</h3>
+                                    <!-- Variant Toggles -->
+                                    <div class="btn-group w-100 mb-2 mt-auto" role="group">
+                                        <input type="radio" class="btn-check" name="variant-teh-susu" id="variant-teh-susu-hot" autocomplete="off" checked 
+                                            data-id="teh-susu-panas" data-name="Teh Susu (Panas)" data-price="6000" data-icon="local_fire_department" data-icon-color="#d97706" data-img="https://images.unsplash.com/photo-1576092762791-dd9e2220afa1?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-teh-susu')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-teh-susu-hot"><span class="material-symbols-outlined fs-6 align-middle">local_fire_department</span> Panas</label>
+
+                                        <input type="radio" class="btn-check" name="variant-teh-susu" id="variant-teh-susu-cold" autocomplete="off" 
+                                            data-id="teh-susu-es" data-name="Teh Susu (Es)" data-price="8000" data-icon="ac_unit" data-icon-color="#0284c7" data-img="https://images.unsplash.com/photo-1576092762791-dd9e2220afa1?auto=format&fit=crop&w=100&q=80"
+                                            onchange="updateVariant('item-teh-susu')">
+                                        <label class="btn btn-outline-primary btn-sm py-1" for="variant-teh-susu-cold"><span class="material-symbols-outlined fs-6 align-middle">ac_unit</span> Es</label>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined active-icon" style="color: #d97706; font-size: 18px;">local_fire_department</span>
+                                                <span class="fw-semibold active-price" style="font-size: 14px;">Rp6.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addVariantToCart('item-teh-susu')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Teh Lemon</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp10.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('teh-lemon', 'Teh Lemon', 10000, 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1512621814436-e0ce114c0042?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Teh Leci</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp10.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('teh-leci', 'Teh Leci', 10000, 'https://images.unsplash.com/photo-1512621814436-e0ce114c0042?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Teh Strawberry</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp10.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('teh-strawberry', 'Teh Strawberry', 10000, 'https://images.unsplash.com/photo-1520121401995-928cd50d4e27?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: BUKAN TEH & KOPI -->
+                <div class="tab-pane fade category-section mb-5" id="cat-bukan" role="tabpanel">
+                    <h2 class="headline-md border-bottom pb-2 mb-4 text-primary">BUKAN TEH & KOPI</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-cols-xxl-5 g-4">
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Coklat</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp12.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('coklat', 'Coklat', 12000, 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1558235287-c5b967818e7e?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Red Velvet</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp12.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('red-velvet', 'Red Velvet', 12000, 'https://images.unsplash.com/photo-1558235287-c5b967818e7e?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Taro</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp12.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('taro', 'Taro', 12000, 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1536935338-7096e625d259?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Matcha</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp13.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('matcha', 'Matcha', 13000, 'https://images.unsplash.com/photo-1536935338-7096e625d259?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1601002360528-9717088bceba?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">ASU (Anggur Susu)</h3>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 18px;">ac_unit</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp10.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('asu', 'ASU (Anggur Susu)', 10000, 'https://images.unsplash.com/photo-1601002360528-9717088bceba?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category: MAKANAN & CAMILAN -->
+                <div class="tab-pane fade category-section mb-5" id="cat-makanan" role="tabpanel">
+                    <h2 class="headline-md border-bottom pb-2 mb-4 text-primary">MAKANAN & CAMILAN</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-cols-xxl-5 g-4">
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1555126634-f5826452a2de?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Indomie Nyemek</h3>
+                                    <p class="text-muted small m-0">Indomie + Bumbu Rahasia + Telor</p>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: var(--text-stone-dark); font-size: 18px;">restaurant</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp10.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('indomie', 'Indomie Nyemek', 10000, 'https://images.unsplash.com/photo-1555126634-f5826452a2de?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1564834724-41d40aab1a04?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Nasi Goreng Makmoer</h3>
+                                    <p class="text-muted small m-0">Nasi Goreng Rempah Special</p>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: var(--text-stone-dark); font-size: 18px;">restaurant</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp13.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('nasgor', 'Nasi Goreng Makmoer', 13000, 'https://images.unsplash.com/photo-1564834724-41d40aab1a04?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Nasi DJ Taichan</h3>
+                                    <p class="text-muted small m-0">Nasi Daun Jeruk + Sate Taichan</p>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: var(--text-stone-dark); font-size: 18px;">restaurant</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp15.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('nasi-dj', 'Nasi DJ Taichan', 15000, 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Roti Bakar</h3>
+                                    <p class="text-muted small m-0">Roti Bakar + Selai Coklat</p>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: var(--text-stone-dark); font-size: 18px;">restaurant</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp6.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('roti-bakar', 'Roti Bakar', 6000, 'https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col">
+                            <article class="card h-100 border-0 shadow-sm">
+                                <div class="card-img-container"><img src="https://images.unsplash.com/photo-1626082895617-2c6ad22080a6?auto=format&fit=crop&w=400&q=80" class="card-img-top"></div>
+                                <div class="card-body d-flex flex-column gap-2">
+                                    <h3 class="headline-md fs-5 m-0">Cihuy</h3>
+                                    <p class="text-muted small m-0">Aci + Tahuy = Mpruyy</p>
+                                    <div class="d-flex flex-column gap-2 mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center bg-light rounded p-2 border">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="material-symbols-outlined" style="color: var(--text-stone-dark); font-size: 18px;">restaurant</span>
+                                                <span class="fw-semibold" style="font-size: 14px;">Rp8.000</span>
+                                            </div>
+                                            <button class="btn border add-btn rounded-circle p-1 d-flex align-items-center justify-content-center text-primary border-primary bg-white" style="width: 28px; height: 28px;" onclick="addToCart('cihuy', 'Cihuy', 8000, 'https://images.unsplash.com/photo-1626082895617-2c6ad22080a6?auto=format&fit=crop&w=100&q=80')">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Cart Sidebar -->
+        <aside class="cart-sidebar d-flex flex-column" id="cartSidebar">
+            <div class="p-4 border-bottom">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h2 class="font-serif text-primary m-0" style="font-size: 20px;">Your Basket</h2>
+                    <button class="btn btn-link p-0 text-muted" onclick="toggleCart()">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <p class="label-sm text-muted m-0">Authentic Indonesian Flavors</p>
+            </div>
+
+            <div id="cart-items-container" class="p-4 flex-grow-1 overflow-auto d-flex flex-column gap-4">
+                <!-- Javascript will populate this -->
+            </div>
+
+            <div class="p-4 border-top mt-auto bg-white">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span class="text-muted fs-5">Total</span>
+                    <span class="headline-md fs-4 text-dark m-0" id="cart-total-price">IDR 0</span>
+                </div>
+                <a href="checkout.html" id="cart-checkout-btn"
+                    class="btn btn-primary w-100 d-block text-center rounded disabled">
+                    Proceed to Checkout
+                </a>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <div class="footer-brand mb-2">Modjoer Makmoer</div>
+                    <p class="text-muted small m-0">© ETS PWEB - Modjoer Makmoer.</p>
+                </div>
+                <div class="col-md-8">
+                    <div class="footer-links d-flex flex-wrap gap-4 justify-content-md-end">
+                        <a href="menu.html">Our Menu</a>
+                        <a href="index.html#about">Our Story</a>
+                        <a href="https://wa.me/628974294466" target="_blank">WhatsApp</a>
+                        <a href="https://maps.google.com/maps?q=-7.5150896,112.5157999" target="_blank">Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
