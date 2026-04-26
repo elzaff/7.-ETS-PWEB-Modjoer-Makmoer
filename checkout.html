@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout - Modjoer Makmoer</title>
+    <title>Pembayaran - Modjoer Makmoer</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo.png">
     <!-- Bootstrap 5 CSS -->
@@ -20,7 +20,7 @@
 
 <body>
 
-    <!-- Header Navbar (Bootstrap) -->
+    <!-- navbar atas -->
     <nav class="navbar navbar-expand-md sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -35,16 +35,17 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav mx-auto mb-2 mb-md-0 d-flex gap-md-4 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link label-sm" href="index.html">Home</a>
+                        <a class="nav-link mini-text" href="index.html">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link label-sm" href="index.html#about">Our Story</a>
+                        <a class="nav-link mini-text" href="index.html#about">Kisah Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link label-sm" href="index.html#contact">Location</a>
+                        <a class="nav-link mini-text" href="index.html#contact">Lokasi</a>
                     </li>
                     <li class="nav-item ms-md-2">
-                        <a class="nav-link label-sm text-primary fw-bold" href="menu.html" style="border-bottom: 2px solid transparent;">Menu & Order</a>
+                        <a class="nav-link mini-text text-primary fw-bold" href="menu.html"
+                            style="border-bottom: 2px solid transparent;">Menu & Pesan</a>
                     </li>
                 </ul>
 
@@ -64,8 +65,8 @@
     <main class="flex-grow-1 py-5">
         <div class="container">
             <div class="mb-5">
-                <h1 class="headline-xl">Secure Checkout</h1>
-                <p class="fs-5 text-muted mt-2">Complete your order to enjoy authentic Indonesian flavors.</p>
+                <h1 class="big-title">Pembayaran Aman</h1>
+                <p class="fs-5 text-muted mt-2">Selesaikan pesanan Anda.</p>
             </div>
 
             <div class="row gy-5">
@@ -75,7 +76,7 @@
                     <div class="card border-0 shadow-sm sticky-top"
                         style="top: 100px; background-color: var(--bg-surface-lowest); border: 1px solid var(--border-color)!important;">
                         <div class="card-body p-4">
-                            <h2 class="headline-md fs-4 mb-4">Order Summary</h2>
+                            <h2 class="small-title fs-4 mb-4">Ringkasan Pesanan</h2>
 
                             <!-- Item List -->
                             <div class="d-flex flex-column gap-4 mb-4" id="checkout-item-list">
@@ -96,7 +97,7 @@
                                 </div>
                                 <!-- Biaya pengiriman dihapus untuk fokus dine-in/takeaway -->
                                 <hr class="my-3" style="border-color: var(--border-outline-variant);">
-                                <div class="d-flex justify-content-between text-primary headline-md fs-4">
+                                <div class="d-flex justify-content-between text-primary small-title fs-4">
                                     <span>Total</span>
                                     <span id="checkout-total">IDR 0</span>
                                 </div>
@@ -112,25 +113,27 @@
                         <div class="card border-0 shadow-sm"
                             style="background-color: var(--bg-surface-lowest); border: 1px solid var(--border-color)!important;">
                             <div class="card-body p-4">
-                                <h2 class="headline-md fs-4 mb-4">Detail Pemesan</h2>
+                                <h2 class="small-title fs-4 mb-4">Detail Pemesan</h2>
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label for="fullName" class="form-label label-sm">Nama Lengkap</label>
+                                        <label for="fullName" class="form-label mini-text">Nama Lengkap</label>
                                         <input type="text" class="form-control" id="fullName"
                                             placeholder="Contoh: Budi Santoso">
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="phone" class="form-label label-sm">Nomor Telepon / WhatsApp</label>
+                                        <label for="phone" class="form-label mini-text">Nomor Telepon / WhatsApp</label>
                                         <input type="tel" class="form-control" id="phone"
                                             placeholder="Contoh: 08123456789">
                                     </div>
                                     <div class="col-12">
-                                        <label for="address" class="form-label label-sm">Nomor Meja (Dine-in) / Alamat (Delivery)</label>
+                                        <label for="address" class="form-label mini-text">Nomor Meja (Dine-in) / Alamat
+                                            (Delivery)</label>
                                         <textarea class="form-control" id="address" rows="2"
                                             placeholder="Contoh: Meja 04 / Jl. Mawar No. 12..."></textarea>
                                     </div>
                                     <div class="col-12">
-                                        <label for="notes" class="form-label label-sm">Catatan Pesanan (Opsional)</label>
+                                        <label for="notes" class="form-label mini-text">Catatan Pesanan
+                                            (Opsional)</label>
                                         <input type="text" class="form-control" id="notes"
                                             placeholder="Contoh: Es dipisah, sambal sedikit">
                                     </div>
@@ -143,7 +146,7 @@
                 <div class="card border-0 shadow-sm"
                     style="background-color: var(--bg-surface-lowest); border: 1px solid var(--border-color)!important;">
                     <div class="card-body p-4">
-                        <h2 class="headline-md fs-4 mb-4">Payment Method</h2>
+                        <h2 class="small-title fs-4 mb-4">Metode Pembayaran</h2>
                         <div class="row g-3">
                             <!-- Option 1: QRIS -->
                             <div class="col-12 col-md-6">
@@ -175,7 +178,7 @@
                         class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2 py-3 fs-5 rounded-3 shadow-sm"
                         type="submit" disabled>
                         <span class="material-symbols-outlined">lock</span>
-                        Place Order
+                        Buat Pesanan
                     </button>
                 </div>
                 </form>
@@ -185,7 +188,7 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- footer bawah -->
     <footer class="footer">
         <div class="container">
             <div class="row gy-4">
@@ -195,8 +198,8 @@
                 </div>
                 <div class="col-md-8">
                     <div class="footer-links d-flex flex-wrap gap-4 justify-content-md-end">
-                        <a href="menu.html">Our Menu</a>
-                        <a href="index.html#about">Our Story</a>
+                        <a href="menu.html">Menu Kami</a>
+                        <a href="index.html#about">Kisah Kami</a>
                         <a href="https://wa.me/628974294466" target="_blank">WhatsApp</a>
                         <a href="https://maps.google.com/maps?q=-7.5150896,112.5157999" target="_blank">Maps</a>
                     </div>
@@ -205,7 +208,7 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
+    <!-- script bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
