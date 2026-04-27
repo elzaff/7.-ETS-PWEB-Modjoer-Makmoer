@@ -1,14 +1,12 @@
-// logika keranjang buat website modjoer
-
-// ambil keranjang dari localstorage kalo ada
+// Ambil keranjang dari localStorage
 let myCart = JSON.parse(localStorage.getItem('modjoer_cart')) || [];
 
-// fungsi buat simpan keranjang
+// Simpan state keranjang ke localStorage
 function storeCart() {
     localStorage.setItem('modjoer_cart', JSON.stringify(myCart));
 }
 
-// buka tutup keranjang sidebar
+// Toggle sidebar keranjang
 function toggleCart() {
     const sidebar = document.getElementById('cartSidebar');
     if (sidebar) {
@@ -16,12 +14,12 @@ function toggleCart() {
     }
 }
 
-// format harga kerupiah
+// Format angka ke Rupiah
 function formatRupiah(amount) {
     return 'IDR ' + amount.toLocaleString('id-ID');
 }
 
-// nambahin item ke keranjang
+// Tambah item ke keranjang
 function putInCart(id, name, price, img) {
     const existingItem = myCart.find(item => item.id === id);
     if (existingItem) {
@@ -37,15 +35,15 @@ function putInCart(id, name, price, img) {
     }
     storeCart();
     showCart();
-    
-    // buka otomatis pas nambah barang
+
+    // Buka sidebar otomatis saat item ditambahkan
     const sidebar = document.getElementById('cartSidebar');
     if (sidebar && !sidebar.classList.contains('show')) {
         sidebar.classList.add('show');
     }
 }
 
-// ngubah jumlah item
+// Ubah kuantitas item
 function changeQty(id, change) {
     const itemIndex = myCart.findIndex(item => item.id === id);
     if (itemIndex > -1) {
@@ -55,26 +53,26 @@ function changeQty(id, change) {
         }
         storeCart();
         showCart();
-        showCheckoutPage(); // update kalo lagi di page checkout
+        showCheckoutPage(); // update tampilan checkout jika ada
     }
 }
 
-// hapus dari keranjang
+// Hapus item dari keranjang
 function removeItem(id) {
     myCart = myCart.filter(item => item.id !== id);
     storeCart();
     showCart();
-    showCheckoutPage(); // update kalo lagi di page checkout
+    showCheckoutPage(); // update tampilan checkout jika ada
 }
 
-// nampilin keranjang di sidebar
+// Render isi keranjang di sidebar
 function showCart() {
     const container = document.getElementById('cart-items-container');
     const counter = document.getElementById('cart-counter');
     const totalPriceEl = document.getElementById('cart-total-price');
     const checkoutBtn = document.getElementById('cart-checkout-btn');
 
-    if (!container) return; // keluar kalo ga ada container
+    if (!container) return;
 
     container.innerHTML = '';
     let totalItems = 0;
@@ -90,7 +88,7 @@ function showCart() {
         if (checkoutBtn) checkoutBtn.classList.add('disabled');
     } else {
         if (checkoutBtn) checkoutBtn.classList.remove('disabled');
-        
+
         myCart.forEach(item => {
             totalItems += item.quantity;
             totalPrice += item.price * item.quantity;
@@ -132,7 +130,7 @@ function showCart() {
     }
 }
 
-// nampilin halaman checkout
+// Render rincian pesanan di halaman checkout
 function showCheckoutPage() {
     const listContainer = document.getElementById('checkout-item-list');
     if (!listContainer) return;
@@ -178,8 +176,8 @@ function showCheckoutPage() {
         listContainer.appendChild(itemEl);
     });
 
-    const tax = subtotal * 0.11; // pajak pb1 11%
-    const delivery = 0; // ga ada ongkir, fokus makan di tempat/takeaway
+    const tax = subtotal * 0.11; // Pajak PB1 11%
+    const delivery = 0; // Tanpa ongkir (Dine-in / Takeaway)
     const total = subtotal + tax + delivery;
 
     subtotalEl.textContent = formatRupiah(subtotal);
@@ -187,45 +185,58 @@ function showCheckoutPage() {
     totalEl.textContent = formatRupiah(total);
 }
 
-// jalanin pas mau bayar
+// Handler saat submit pesanan
 function submitOrder(event) {
     event.preventDefault();
     if (myCart.length === 0) return;
-    
-    // ambil isian form
+
+    // Ambil data form
     const fullName = document.getElementById('fullName') ? document.getElementById('fullName').value.trim() : '';
     const paymentElement = document.querySelector('input[name="payment"]:checked');
     const paymentMethod = paymentElement ? paymentElement.value : 'Cash';
-    
-    // bikin rincian pesanan
+
+    // Format rincian pesanan
     let orderDetails = myCart.map(item => `- ${item.quantity}x ${item.name}`).join('%0A');
-    
-    // kalimat pesan buat wa
+
+    // Template pesan WhatsApp
     const greeting = fullName ? `Halo kak, saya ${fullName}, saya mau pesan:` : `Halo kak, saya mau pesan:`;
     const message = `${greeting}%0A${orderDetails}%0A%0AMetode Pembayaran: ${paymentMethod}`;
-    
-    // nomor wa admin
-    const waNumber = "628974294466"; 
+
+    // Nomor WhatsApp tujuan
+    const waNumber = "628974294466";
     const waUrl = `https://wa.me/${waNumber}?text=${message}`;
-    
-    // kosongin keranjang terus pindah ke wa
+
+    // Kosongkan keranjang dan redirect
     myCart = [];
     storeCart();
     window.location.href = waUrl;
 }
 
-// pas halaman baru kelar loading
+// Inisialisasi saat DOM siap
 document.addEventListener("DOMContentLoaded", () => {
     showCart();
     showCheckoutPage();
-    
+
+    const fadeIns = document.querySelectorAll('.fade-in');
+    if (fadeIns.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        fadeIns.forEach(el => observer.observe(el));
+    }
+
     const checkoutForm = document.getElementById('checkout-form');
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', submitOrder);
     }
 });
 
-// ganti varian harga pas diklik di menu
+// Ubah harga berdasarkan varian yang dipilih
 function changeVariant(itemId) {
     const card = document.getElementById(itemId);
     if (!card) return;
@@ -237,10 +248,10 @@ function changeVariant(itemId) {
     const icon = selectedRadio.getAttribute('data-icon');
     const iconColor = selectedRadio.getAttribute('data-icon-color');
 
-    // benerin format harga
+    // Format harga
     const formattedPrice = "Rp" + price.toLocaleString('id-ID');
-    
-    // ganti tulisan di html
+
+    // Perbarui teks di DOM
     const priceDisplay = card.querySelector('.active-price');
     const iconDisplay = card.querySelector('.active-icon');
 
@@ -251,7 +262,7 @@ function changeVariant(itemId) {
     }
 }
 
-// milih varian terus dimasukin ke keranjang
+// Tambahkan varian terpilih ke keranjang
 function putVariantInCart(itemId) {
     const card = document.getElementById(itemId);
     if (!card) return;
@@ -262,7 +273,7 @@ function putVariantInCart(itemId) {
     const id = selectedRadio.getAttribute('data-id');
     const name = selectedRadio.getAttribute('data-name');
     const price = parseInt(selectedRadio.getAttribute('data-price'));
-    
+
     const imgElement = card.querySelector('img');
     const img = imgElement ? imgElement.src : selectedRadio.getAttribute('data-img');
 
